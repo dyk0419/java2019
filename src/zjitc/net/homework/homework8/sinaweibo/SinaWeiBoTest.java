@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class SinaWeiBoTest {
     static Scanner scannerInt = new Scanner(System.in);
     static Scanner scannerString = new Scanner(System.in);
+    static SinaWeiboDaolmp sinaWeiboDaolmp = new SinaWeiboDaolmp();
 
     public static void main(String[] args) {
         while (true) {
@@ -44,8 +45,10 @@ public class SinaWeiBoTest {
         System.out.println("请在输入一次密码");
         String passwordenter = scannerString.nextLine();
         System.out.println("请输入手机号");
-        int phonenumber=scannerInt.nextInt();
+        String phonenumber = scannerString.nextLine();
         System.out.println("请输入电子邮箱");
         String email = scannerString.nextLine();
+        User user = new User(userName, password, passwordenter, phonenumber, email);
+        sinaWeiboDaolmp.regist(user);
     }
 }

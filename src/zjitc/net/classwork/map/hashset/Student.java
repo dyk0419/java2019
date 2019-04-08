@@ -27,7 +27,7 @@ public class Student {
     /**
      * 重写的原因
      * 输出的格式
-     * print（user）隐含的就是调用user.toString
+     * print（User）隐含的就是调用user.toString
      * @return
      */
     @Override

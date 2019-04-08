@@ -24,7 +24,7 @@ public class UserDaolmp implements UserDao {
     @Override
     public boolean login(String userName, String password) {
         for (int i = 0; i < userList.size(); i++) {
-            /* String user= (String) userList.get(i);*/
+            /* String User= (String) userList.get(i);*/
             if (userName.equals(userList.get(i))) {
                 /* String pass= (String) passwordList.get(i);*/
                 if (password.equals(passwordList.get(i))) {

@@ -16,10 +16,10 @@ public class User {
     public User() {
     }
 
-    public User(String username, String psaaword, String passwordenter, String phonenumber, String email) {
+    public User(String username, String psaaword, String phonenumber, String email) {
         this.username = username;
         this.psaaword = psaaword;
-        this.passwordenter = passwordenter;
+
         this.phonenumber = phonenumber;
         this.email = email;
     }

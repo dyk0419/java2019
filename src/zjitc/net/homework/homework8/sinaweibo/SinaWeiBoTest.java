@@ -44,11 +44,28 @@ public class SinaWeiBoTest {
         String password = scannerString.nextLine();
         System.out.println("请在输入一次密码");
         String passwordenter = scannerString.nextLine();
+        while (!passwordenter.equals(password)) {
+            System.out.println("密码输入有误，请重新注册");
+            passwordenter = scannerString.nextLine();
+        }
         System.out.println("请输入手机号");
         String phonenumber = scannerString.nextLine();
+        /*手机号码应该长度11位，并且以13、15、17、18开头*/
+    /*   ! ((phonenumber.substring(0, 2) == "13" || phonenumber.substring(0, 2) == "15" ||
+                phonenumber.substring(0, 2) == "17" || phonenumber.substring(0, 2) == "18") &&  phonenumber.length()==11)*/
+
+        while (!(phonenumber.substring(0, 2).equals("13") || phonenumber.substring(0, 2) .equals("15") ||
+                phonenumber.substring(0, 2).equals("17")|| phonenumber.substring(0, 2).equals("18")) || (phonenumber.length() != 11)) {
+            System.out.println("手机号输入有误");
+            phonenumber = scannerString.nextLine();
+        }
         System.out.println("请输入电子邮箱");
         String email = scannerString.nextLine();
-        User user = new User(userName, password, passwordenter, phonenumber, email);
-        sinaWeiboDaolmp.regist(user);
+        while (!email.contains("@")) {
+            System.out.println("输入有误，请重新输入");
+            email = scannerString.nextLine();
+        }
+        User user = new User(userName, password, phonenumber, email);
+         sinaWeiboDaolmp.regist(user);
     }
 }

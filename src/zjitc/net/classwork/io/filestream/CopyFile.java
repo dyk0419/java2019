@@ -1,4 +1,4 @@
-package zjitc.net.classwork.io;
+package zjitc.net.classwork.io.filestream;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

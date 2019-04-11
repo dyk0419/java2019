@@ -10,8 +10,9 @@ import java.util.Set;
 /**
  * @author 杜源康
  * @date 2019-04-10 22:59
+ * 把HashMap集合中的数据存储到文本文件pan.txt
  */
-public class HashsetIo {
+public class HashMapIo {
     public static void main(String[] args) {
         Student s1 = new Student(1,"柯旭海");
         Student s2 = new Student(2,"宋自江");

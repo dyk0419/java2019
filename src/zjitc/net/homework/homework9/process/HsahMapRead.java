@@ -1,4 +1,4 @@
-package zjitc.net.homework.homework9;
+package zjitc.net.homework.homework9.process;
 
 import zjitc.net.classwork.map.hashmap.Student;
 
@@ -14,7 +14,7 @@ import java.util.Set;
 /**
  * @author 杜源康
  * @date 2019-04-11 12:15
- * 从文本文件pan.txt中读取数据存储到集合HashMap中，并遍历集合
+ :2： 从文本文件pan.txt中读取数据存储到集合HashMap中，并遍历集合
  */
 public class HsahMapRead {
     public static void main(String[] args) {

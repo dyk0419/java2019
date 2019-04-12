@@ -1,4 +1,4 @@
-package zjitc.net.homework.homework9;
+package zjitc.net.homework.homework9.process;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,8 +27,7 @@ public class Test {
             String encoding="UTF-8";
             File file=new File(filePath);
             if(file.isFile() && file.exists()){ //判断文件是否存在
-                InputStreamReader read = new InputStreamReader(
-                        new FileInputStream(file),encoding);//考虑到编码格式
+                InputStreamReader read = new InputStreamReader(new FileInputStream(file),encoding);//考虑到编码格式
                 BufferedReader bufferedReader = new BufferedReader(read);
                 String lineTxt = null;
                 while((lineTxt = bufferedReader.readLine()) != null){

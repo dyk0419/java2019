@@ -51,7 +51,7 @@ public class Test {
             /*迭代器中的元素都是key*/
             Integer key = (Integer) iterator.next();
             /*根据key得到value*/
-            System.out.println("--------" + hashMap.get(key));
+            System.out.println("--------" +key+ hashMap.get(key));
         }
         /*第二种遍历方法：键值对对象找键和值
          * 1、先得到迭代器对象

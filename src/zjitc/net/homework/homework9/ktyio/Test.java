@@ -18,6 +18,7 @@ public class Test {
         System.out.println("2---歌曲前移一位");
         System.out.println("3---退出");
 
+
         daolmp.init();
         while (true) {
             System.out.println("请输入要执行的序号");

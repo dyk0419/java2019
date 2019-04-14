@@ -22,9 +22,31 @@ public class SongDaolmp implements SongDao {
         arrayList.add(song3);
         arrayList.add(song4);
         System.out.print("初始化歌曲列表：");
-        Iterator iterator = arrayList.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next());
+        Writer out = null;
+        BufferedWriter bw = null;
+        try {
+            out = new FileWriter("ktv.txt", true);
+            bw = new BufferedWriter(out);
+            for (int i = 0; i < arrayList.size(); i++) {
+                System.out.print(arrayList.get(i));
+                bw.write(String.valueOf(arrayList.get(i)));
+                bw.newLine();
+            }
+            bw.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+                if (bw != null) {
+                    bw.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
         System.out.println();
     }
@@ -32,13 +54,28 @@ public class SongDaolmp implements SongDao {
     @Override
     public void add(Song song) {
         arrayList.add(song);
+        Writer out = null;
+        BufferedWriter bw = null;
         try {
-            Writer out=new FileWriter("ktv.txt",true);
-            BufferedWriter bw=new BufferedWriter(out);
+            out = new FileWriter("ktv.txt", true);
+            bw = new BufferedWriter(out);
             bw.write(song.getName());
             bw.newLine();
+            bw.flush();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (out != null) {
+                    out.close();
+                }
+                if (bw != null) {
+                    bw.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
 
         System.out.println("已添加歌曲：" + song.getName());

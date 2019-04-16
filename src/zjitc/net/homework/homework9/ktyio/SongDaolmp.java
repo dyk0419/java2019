@@ -58,7 +58,7 @@ public class SongDaolmp implements SongDao {
         BufferedWriter bw = null;
         try {
             out = new FileWriter("ktv.txt", true);
-            bw = new BufferedWriter(out);
+             bw = new BufferedWriter(out);
             bw.write(song.getName());
             bw.newLine();
             bw.flush();

@@ -7,4 +7,6 @@ package zjitc.net.classwork.summary.user;
 public interface UserDao {
     void regist(User user);
     User login(String username,String password);
+    void ergodic();
+    int delete(String username,String password);
 }

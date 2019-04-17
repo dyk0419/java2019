@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @Author admin
  * @Date 2019/4/16 14:11
  */
-public class UserDaoIO implements UserDao {
+public class UserDaoIO2 implements UserDao {
     ArrayList<User> arrayList = new ArrayList<User>();
     ArrayList<User> arrayList2 = new ArrayList<User>();
 
@@ -73,12 +73,10 @@ public class UserDaoIO implements UserDao {
             String line = null;
             while ((line = br.readLine()) != null) {
                 String[] s = line.split(",");
-              /*  if (s[0].equals(username)&&s[1].equals(password)){
-                    User user=new User(s[0],s[1],s[2]);
+                if (s[0].equals(username) && s[1].equals(password)) {
+                    User user = new User(s[0], s[1], s[2]);
                     return user;
-                }*/
-                User user = new User(s[0], s[1], s[2]);
-                arrayList2.add(user);
+                }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -94,11 +92,6 @@ public class UserDaoIO implements UserDao {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-        }
-        for (int i = 0; i < arrayList2.size(); i++) {
-            if (arrayList2.get(i).getUsername().equals(username) && arrayList2.get(i).getPsaaword().equals(password)) {
-                return arrayList2.get(i);
             }
         }
         return null;
@@ -143,26 +136,29 @@ public class UserDaoIO implements UserDao {
 
     @Override
     public int delete(String username, String password) {
-        return 0;
-    }
-
-    public void delete2(String username, String password) {
-/*        Reader in = null;
+        Reader in = null;
         BufferedReader br = null;
+
+        BufferedWriter bw = null;
+        Writer out = null;
         try {
             in = new FileReader("D:\\user.txt");
             br = new BufferedReader(in);
 
+            out = new FileWriter("D:\\user.txt");
+            bw = new BufferedWriter(out);
+
             String line = null;
             while ((line = br.readLine()) != null) {
                 String[] s = line.split(",");
-              *//*  if (s[0].equals(username)&&s[1].equals(password)){
-                    User user=new User(s[0],s[1],s[2]);
-                    return user;
-                }*//*
-                User user = new User(s[0], s[1], s[2]);
-                arrayList2.add(user);
+                if (!s[0].equals(username)&&!s[1].equals(password)){
+                    String line2 =s[0] + "," + s[1] + "," + s[2];
+                    bw.write(line2);
+                    bw.newLine();
+                }
             }
+            bw.flush();
+            return 1;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -175,44 +171,6 @@ public class UserDaoIO implements UserDao {
                 if (br != null) {
                     br.close();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }*/
-
-        int j = 0;
-        for (int i = 0; i < arrayList.size(); i++) {
-            if (arrayList.get(i).getUsername().equals(username) && arrayList.get(i).getPsaaword().equals(password)) {
-                arrayList.remove(i);
-                j = 1;
-            } else {
-                j = 2;
-            }
-        }
-        if (j == 1) {
-            System.out.println("删除成功");
-        } else if (j == 2) {
-            System.out.println("删除失败，用户名或密码错误");
-        }
-
-        BufferedWriter bw = null;
-        Writer out = null;
-        try {
-            out = new FileWriter("D:\\user.txt");
-            bw = new BufferedWriter(out);
-
-            for (int i = 0; i < arrayList.size(); i++) {
-                String line2 = arrayList.get(i).getUsername() + "," + arrayList.get(i).getPsaaword() + "," + arrayList.get(i).getEmail();
-                bw.write(line2);
-                bw.newLine();
-            }
-            bw.flush();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
                 if (bw != null) {
                     bw.close();
                 }
@@ -223,5 +181,6 @@ public class UserDaoIO implements UserDao {
                 e.printStackTrace();
             }
         }
+        return 0;
     }
 }

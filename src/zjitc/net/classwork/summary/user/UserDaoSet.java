@@ -42,4 +42,24 @@ public class UserDaoSet implements UserDao {
         }
         return null;
     }
+
+    @Override
+    public void ergodic() {
+        for (int i = 0; i < arrayList.size(); i++) {
+            System.out.println("用户名："+arrayList.get(i).getUsername()+
+                    "\t"+"密码："+arrayList.get(i).getPsaaword()+
+                    "\t"+"邮箱："+arrayList.get(i).getEmail());
+        }
+    }
+
+    @Override
+    public int delete(String username, String password) {
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (arrayList.get(i).getUsername().equals(username)&&arrayList.get(i).getPsaaword().equals(password)){
+                arrayList.remove(i);
+                return 1;
+            }
+        }
+        return 0;
+    }
 }

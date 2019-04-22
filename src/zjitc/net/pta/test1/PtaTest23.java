@@ -1,4 +1,4 @@
-package zjitc.net.pta;
+package zjitc.net.pta.test1;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package zjitc.net.pta.ptaTest4;
+package zjitc.net.pta.test1.ptaTest4;
 
 /**
  * @Author admin

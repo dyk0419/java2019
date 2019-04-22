@@ -164,8 +164,55 @@ public class PhoneDaoIO implements PhoneDao {
 
     @Override
     public int delete(Phone phone) {
-
         return -1;
+    }
+
+    public void delete2(String phoneModel, String phoneName, String phoneColor) {
+        int j = 0;
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (arrayList.get(i).getModel().equals(phoneModel) &&
+                    arrayList.get(i).getName().equals(phoneName) &&
+                    arrayList.get(i).equals(phoneColor)) {
+                arrayList.remove(i);
+                j = 1;
+            } else {
+                j = 2;
+            }
+        }
+        if (j == 1) {
+            System.out.println("删除成功");
+        } else if (j == 2) {
+            System.out.println("删除失败");
+        }
+
+        BufferedWriter bw = null;
+        Writer out = null;
+        try {
+            out = new FileWriter("D:\\phone.txt");
+            bw = new BufferedWriter(out);
+
+            for (int i = 0; i < arrayList.size(); i++) {
+                String line2 = arrayList.get(i).getModel() + "," + arrayList.get(i).getName() + "," + arrayList.get(i).getColor();
+                bw.write(line2);
+                bw.newLine();
+            }
+            bw.flush();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (bw != null) {
+                    bw.close();
+                }
+                if (out != null) {
+                    out.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

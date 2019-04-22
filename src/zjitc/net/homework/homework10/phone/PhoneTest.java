@@ -95,6 +95,9 @@ public class PhoneTest {
         } else if (n == -1) {
             System.out.println("删除失败");
         }
+ /*     io的方法
+        PhoneDaoIO phoneDaoIO= (PhoneDaoIO) phoneDao;
+        phoneDaoIO.delete2(model,name,color);*/
     }
 }
 

@@ -30,12 +30,16 @@ public class PhoneTest {
                     inUI();
                     break;
                 case 2:
+                    selectModel();
                     break;
                 case 3:
+                    selectName();
                     break;
                 case 4:
+                    phoneDao.selectAll();
                     break;
                 case 5:
+                    delete();
                     break;
                 case 6:
                     System.out.println("欢迎下次光临");
@@ -55,8 +59,42 @@ public class PhoneTest {
         String name = scannerString.nextLine();
         System.out.println("请输入手机颜色：");
         String color = scannerString.nextLine();
-        Phone phone=new Phone(model,name,color);
+        Phone phone = new Phone(model, name, color);
         phoneDao.in(phone);
+    }
+
+    private static void selectModel() {
+        System.out.println("请输入要查询的手机型号");
+        String model = scannerString.nextLine();
+        int n = phoneDao.selectModel(model);
+        if (n == -1) {
+            System.out.println("找不到相应的手机信息");
+        }
+    }
+
+    private static void selectName() {
+        System.out.println("请输入要查询的手机名称");
+        String name = scannerString.nextLine();
+        int n = phoneDao.selectName(name);
+        if (n == -1) {
+            System.out.println("找不到相应的手机信息");
+        }
+    }
+
+    private static void delete() {
+        System.out.println("请输入手机型号：");
+        String model = scannerString.nextLine();
+        System.out.println("请输入手机姓名：");
+        String name = scannerString.nextLine();
+        System.out.println("请输入手机颜色：");
+        String color = scannerString.nextLine();
+        Phone phone = new Phone(model, name, color);
+        int n = phoneDao.delete(phone);
+        if (n == 1) {
+            System.out.println("删除成功");
+        } else if (n == -1) {
+            System.out.println("删除失败");
+        }
     }
 }
 

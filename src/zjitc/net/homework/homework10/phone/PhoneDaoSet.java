@@ -16,22 +16,50 @@ public class PhoneDaoSet implements PhoneDao {
     }
 
     @Override
-    public Phone selectModel(String model) {
-        return null;
+    public int selectModel(String model) {
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (model.equals(arrayList.get(i).getModel())) {
+                System.out.println("型号：" + arrayList.get(i).getModel() +
+                        "\t" + "名字:" + arrayList.get(i).getName() +
+                        "\t" + "颜色：" + arrayList.get(i).getColor());
+                return 1;
+            }
+        }
+        return -1;
     }
 
     @Override
-    public Phone selectName(String name) {
-        return null;
+    public int selectName(String name) {
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (name.equals(arrayList.get(i).getName())) {
+                System.out.println("型号：" + arrayList.get(i).getModel() +
+                        "\t" + "名字:" + arrayList.get(i).getName() +
+                        "\t" + "颜色：" + arrayList.get(i).getColor());
+                return 1;
+            }
+        }
+        return -1;
     }
 
     @Override
     public void selectAll() {
-
+        for (int i = 0; i < arrayList.size(); i++) {
+            System.out.println("型号：" + arrayList.get(i).getModel() +
+                    "\t" + "名字:" + arrayList.get(i).getName() +
+                    "\t" + "颜色：" + arrayList.get(i).getColor());
+        }
     }
 
     @Override
-    public void delete(String model) {
-
+    public int delete(Phone phone) {
+        for (int i = 0; i < arrayList.size(); i++) {
+            if ((phone.getModel()).equals(arrayList.get(i).getModel()) &&
+                    (phone.getName()).equals(arrayList.get(i).getName()) &&
+                    (phone.getColor()).equals(arrayList.get(i).getColor())) {
+                arrayList.remove(i);
+                return 1;
+            }
+        }
+        return -1;
     }
 }

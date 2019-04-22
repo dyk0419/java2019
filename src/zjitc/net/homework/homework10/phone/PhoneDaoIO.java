@@ -5,19 +5,20 @@ package zjitc.net.homework.homework10.phone;
  * @date 2019-04-22 16:55
  */
 public class PhoneDaoIO implements PhoneDao {
+
     @Override
     public void in(Phone phone) {
 
     }
 
     @Override
-    public Phone selectModel(String model) {
-        return null;
+    public int selectModel(String model) {
+        return -1;
     }
 
     @Override
-    public Phone selectName(String name) {
-        return null;
+    public int selectName(String name) {
+        return -1;
     }
 
     @Override
@@ -26,7 +27,8 @@ public class PhoneDaoIO implements PhoneDao {
     }
 
     @Override
-    public void delete(String model) {
-
+    public int delete(Phone phone) {
+        return -1;
     }
+
 }

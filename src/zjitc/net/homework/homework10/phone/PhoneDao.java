@@ -6,8 +6,8 @@ package zjitc.net.homework.homework10.phone;
  */
 public interface PhoneDao {
     void in(Phone phone);
-    Phone selectModel(String model);
-    Phone selectName(String name);
+    int selectModel(String model);
+    int selectName(String name);
     void selectAll();
-    void delete(String model);
+    int delete(Phone phone);
 }

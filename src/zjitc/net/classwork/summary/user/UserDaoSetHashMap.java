@@ -29,10 +29,37 @@ public class UserDaoSetHashMap implements UserDao {
         while (iterator.hasNext()) {
             String name = (String) iterator.next();
             String pword = hashMap.get(name).getPsaaword();
-                if (name.equals(username) && pword.equals(password)) {
-                    return hashMap.get(name);
-                }
+            if (name.equals(username) && pword.equals(password)) {
+                return hashMap.get(name);
+            }
         }
         return null;
+    }
+
+    @Override
+    public void ergodic() {
+        Iterator iterator = hashMap.keySet().iterator();
+        while (iterator.hasNext()) {
+            String name = (String) iterator.next();
+            String pword = hashMap.get(name).getPsaaword();
+            String email = hashMap.get(name).getEmail();
+            System.out.println("用户名：" + name + "\t" + "密码：" + pword + "\t" + "邮箱：" + email);
+        }
+    }
+
+
+    @Override
+    public int delete(String username, String password) {
+        Iterator iterator = hashMap.keySet().iterator();
+        while (iterator.hasNext()) {
+            String name = (String) iterator.next();
+            String pword = hashMap.get(name).getPsaaword();
+            if (name.equals(username) && pword.equals(password)) {
+               hashMap.remove(name);
+               return 1;
+            }
+        }
+
+        return 0;
     }
 }

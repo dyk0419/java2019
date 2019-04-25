@@ -26,34 +26,29 @@ public class Update {
             String user = "root";
             String password = "419419";
             conn = DriverManager.getConnection(url, user, password);
-            System.out.println("请选择你要修改的内容");
-            System.out.println("1.图书名称");
-            System.out.println("2.出版社");
-            System.out.println("3.作者");
-            System.out.println("4.价格");
-            int n=scannerInt.nextInt();
-            if (n==1){
-                String sql = "insert into book(bookname,press,author,price) value (?,?,?,?)";
-                pstem = conn.prepareStatement(sql);
+            String sql = "UPDATE`book`\n" +
+                    "SET?=?\n" +
+                    "WHERE`bookid`=?";
+            pstem = conn.prepareStatement(sql);
+            System.out.println("请输入要修改的项目");
+            String w1 = scannerString.nextLine();
+            pstem.setString(1, w1);
+            if (w1.equals("price")) {
+                System.out.println("请输入价格");
+                double price = scannerDouble.nextDouble();
+                System.out.println("请输入要修改的图书id");
+                String wid = scannerString.nextLine();
+                pstem.setDouble(2, price);
+                pstem.setString(3, wid);
+            } else {
+                System.out.println("请输入内容");
+                String w2 = scannerString.nextLine();
+                System.out.println("请输入要修改的图书id");
+                String wid = scannerString.nextLine();
+                pstem.setString(2, w2);
+                pstem.setString(3, wid);
             }
 
-
-
-
-            System.out.println("请输入图书名称");
-            String bookname = scannerString.nextLine();
-            System.out.println("请输入出版社");
-            String press = scannerString.nextLine();
-            System.out.println("请输入作者");
-            String author = scannerString.nextLine();
-            System.out.println("请输入价格");
-            double price = scannerDouble.nextDouble();
-
-
-            pstem.setString(1, bookname);
-            pstem.setString(2, press);
-            pstem.setString(3, author);
-            pstem.setDouble(4, price);
             int c = pstem.executeUpdate();
             System.out.println("影响了" + c + "行");
         } catch (Exception e) {

@@ -24,7 +24,7 @@ public class Update {
             Class.forName("com.mysql.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/bookjava";
             String user = "root";
-            String password = "419419";
+            String password = "123456";
             conn = DriverManager.getConnection(url, user, password);
             String sql = "UPDATE`book`\n" +
                     "SET?=?\n" +
@@ -37,16 +37,16 @@ public class Update {
                 System.out.println("请输入价格");
                 double price = scannerDouble.nextDouble();
                 System.out.println("请输入要修改的图书id");
-                String wid = scannerString.nextLine();
+                int bookid=scannerInt.nextInt();
                 pstem.setDouble(2, price);
-                pstem.setString(3, wid);
+                pstem.setInt(3, bookid);
             } else {
                 System.out.println("请输入内容");
                 String w2 = scannerString.nextLine();
                 System.out.println("请输入要修改的图书id");
-                String wid = scannerString.nextLine();
+                int bookid=scannerInt.nextInt();
                 pstem.setString(2, w2);
-                pstem.setString(3, wid);
+                pstem.setInt(3, bookid);
             }
 
             int c = pstem.executeUpdate();

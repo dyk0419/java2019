@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @Author admin
  * @Date 2019/4/26 8:16
  */
-public class BookDaoDB {
+public class BookDaoDB implements BookDao {
     Connection conn = JDBCUtils.getConn();
     PreparedStatement pstem = null;
     ResultSet resultSet = null;
@@ -20,7 +20,8 @@ public class BookDaoDB {
      * @param name
      * @return
      */
-    private int existence(String name) {
+    @Override
+    public int existence(String name) {
         int id = -1;
         String sql = "SELECT`bookid`\n" +
                 "FROM`book`\n" +
@@ -61,6 +62,7 @@ public class BookDaoDB {
         return  null;
     }
 
+    @Override
     public int add(Book book) {
         int c = 0;
 
@@ -109,6 +111,7 @@ public class BookDaoDB {
      * 这种方法是替换整条图书信息
      * @return
      */
+    @Override
     public int update2(Book book){
         int c=0;
         int id = existence(book.getBookname());
@@ -148,6 +151,7 @@ public class BookDaoDB {
         return c;
     }
 
+    @Override
     public int delete(int id) {
         int c = 0;
         String sql = "delete from book where bookid=?";
@@ -161,6 +165,7 @@ public class BookDaoDB {
         return c;
     }
 
+    @Override
     public ArrayList select() {
         ArrayList<Book> arrayList = new ArrayList<Book>();
 
@@ -183,6 +188,7 @@ public class BookDaoDB {
         return arrayList;
     }
 
+    @Override
     public void close(){
         JDBCUtils.close(conn,pstem,resultSet);
     }
